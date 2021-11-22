@@ -1,11 +1,11 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 
 const CurrentWeather =(props)=>{
   const [isLoaded, setIsLoaded] = useState(false);
-  const [currentTime, setCurrentTime] = useState({});
+  const [currentTime, setCurrentTime] = useState("");
   const apiCall = "https://timezone.abstractapi.com/v1/current_time/?api_key=dee439706fa54b019a4863ee627c2aa4&location=" + props.city;
-
+useEffect(()=> {
   fetch(apiCall,{method: 'GET'})
   .then((response) => response.json())
   .then(data => { //denne bodyen kan byttes ut med console.log(data.datetime)
@@ -14,13 +14,12 @@ const CurrentWeather =(props)=>{
     setIsLoaded(true);
   }
   );
+},[]);
+
   console.log("console-logging current time:" + currentTime);
 
 return currentTime;
 }
-
-
-
 
 export default CurrentWeather;
 //apiKey = https://timezone.abstractapi.com/v1/current_time/?api_key=dee439706fa54b019a4863ee627c2aa4&location=Bergen, Norway
