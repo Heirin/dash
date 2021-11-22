@@ -1,13 +1,26 @@
 import React from "react";
+const express = require('express');
+
+
 
 
 const CurrentWeather =(props)=>{
-  
   const apiCall = "https://timezone.abstractapi.com/v1/current_time/?api_key=dee439706fa54b019a4863ee627c2aa4&location=" + props.city;
-  return apiCall;
+  const weatherResponse = fetch(apiCall,{
+    method: 'GET'
+  });
+
+
+
+
+  return weatherResponse;
 }
 
+<<<<<<< HEAD
 //Dette er en kommentar for å gjøre en test! Heiijjj!
+=======
+
+>>>>>>> fadb1cfe0bd51732f5482f70f9fa2767bd56a84f
 
 export default CurrentWeather;
 //apiKey = https://timezone.abstractapi.com/v1/current_time/?api_key=dee439706fa54b019a4863ee627c2aa4&location=Bergen, Norway
