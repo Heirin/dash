@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      const weather = <CurrentWeather city="Bergen"/>;
+      <CurrentWeather city="Bergen"/>;
 
       </header>
     </div>
