@@ -1,20 +1,24 @@
-import React from "react";
-const express = require('express');
-
-
+import {useState} from "react";
 
 
 const CurrentWeather =(props)=>{
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [currentTime, setCurrentTime] = useState({});
   const apiCall = "https://timezone.abstractapi.com/v1/current_time/?api_key=dee439706fa54b019a4863ee627c2aa4&location=" + props.city;
-  const weatherResponse = fetch(apiCall,{
-    method: 'GET'
-  });
 
+  fetch(apiCall,{method: 'GET'})
+  .then((response) => response.json())
+  .then(data => { //denne bodyen kan byttes ut med console.log(data.datetime)
+    console.log("current time:" + data.datetime)
+    setCurrentTime(data.datetime);
+    setIsLoaded(true);
+  }
+  );
+  console.log("console-logging current time:" + currentTime);
 
-
-
-  return weatherResponse;
+return currentTime;
 }
+
 
 
 
