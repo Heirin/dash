@@ -13,8 +13,8 @@ useEffect(()=> {
     console.log(response);
     response.json()})
   .then(data => { //denne bodyen kan byttes ut med console.log(data.datetime)
-    console.log("current weather:" + data.weather[1]);
-    setCurrentWeather(data.weather[1]);
+    console.log("current weather:" + data.weather[0].description);
+    setCurrentWeather(data.weather[0].description);
     setIsLoaded(true);
   }
   );
