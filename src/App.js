@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <CurrentWeather city="Bergen"/>;
+      <CurrentWeather city="Bergen"/>
     
 
       </header>

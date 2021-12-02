@@ -1,31 +1,35 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 
 
 const CurrentWeather =(props)=>{
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [currentWeather, setCurrentWeather] = useState("");
-  const apiKey = "32b1ef2fde08487f590d2266076d4f88";
-  const apiCall = "api.openweathermap.org/data/2.5/weather?q="+props.city+"&appid=" + apiKey;
-  console.log(apiCall);
-useEffect(()=> {
-  fetch(apiCall,{method: 'GET'})
-  .then((response) => {
-    console.log(response);
-    response.json()})
-  .then(data => { //denne bodyen kan byttes ut med console.log(data.datetime)
-    console.log("current weather:" + data.weather[0].description);
-    setCurrentWeather(data.weather[0].description);
-    setIsLoaded(true);
-  }
-  );
-},[]);
+  const [weather, setWeather] = useState("");
 
-  console.log("console-logging current weather:" + currentWeather);
+  useEffect(()=>{
+    const apiKey = "32b1ef2fde08487f590d2266076d4f88";
+    const apiCall = "https://api.openweathermap.org/data/2.5/weather?q="+props.city+"&appid=" + apiKey;
+    console.log(apiCall);
 
-return currentWeather;
+    const fetchData = async() => {
+      try{
+        const response = await fetch(apiCall);
+        const json = await response.json();
+        console.log(json);
+        setWeather(json.weather[0].description);
+      }catch(error){
+        console.log("error happened here");
+        console.error(error);
+      }
+    }
+
+    fetchData();
+
+  }, []);
+
+  return weather;
+
 }
 
 export default CurrentWeather;
 
 //api-key: 32b1ef2fde08487f590d2266076d4f88
-// api call: api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+//api call: api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
