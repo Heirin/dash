@@ -1,0 +1,12 @@
+.weather {
+    font-size: 2rem;
+}
+
+.weather-icon {
+    display: inline-block;
+    /*border: 1px solid red;*/
+}
+
+p {
+    margin: 0;
+}

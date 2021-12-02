@@ -1,0 +1,11 @@
+body {
+    background-color: rgb(192, 207, 211);
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+.App-header {
+    padding: 3em 4em;
+}
